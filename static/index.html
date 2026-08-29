@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movie Mood Recommender</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Movie Mood Recommender</h1>
+      <p class="caption">Content-based recommendations from Telugu, Hindi, English, and Kannada movies.</p>
+      <div id="status" class="status starting">Starting…</div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="mood" type="button">Recommend by mood</button>
+      <button class="tab" data-tab="similar" type="button">Similar movies</button>
+    </nav>
+
+    <section id="panel-mood" class="panel active">
+      <div class="grid-4">
+        <label>
+          <span>Your mood</span>
+          <input id="mood" type="text" placeholder="happy, sad, excited, romantic, curious..." />
+        </label>
+        <label>
+          <span>Language</span>
+          <select id="language"><option value="Any">Any</option></select>
+        </label>
+        <label>
+          <span>Results <em id="count-val">10</em></span>
+          <input id="count" type="range" min="5" max="20" value="10" />
+        </label>
+        <label>
+          <span>Min rating <em id="rating-val">0</em></span>
+          <input id="min-rating" type="range" min="0" max="9" step="0.5" value="0" />
+        </label>
+      </div>
+      <p class="hint">Examples: happy · sad · angry · scared · romantic · curious · excited · tired</p>
+      <button id="btn-mood" class="primary" type="button">Get recommendations</button>
+      <div id="mood-msg" class="msg" hidden></div>
+      <div id="mood-results" class="table-wrap"></div>
+    </section>
+
+    <section id="panel-similar" class="panel">
+      <div class="grid-2">
+        <label>
+          <span>Movie title</span>
+          <input id="title" type="text" placeholder="e.g. RRR, Eagle, Pushpa" autocomplete="off" />
+        </label>
+        <label>
+          <span>Similar count <em id="sim-count-val">10</em></span>
+          <input id="sim-count" type="range" min="5" max="20" value="10" />
+        </label>
+      </div>
+      <p id="suggestions" class="hint"></p>
+      <button id="btn-similar" class="primary" type="button">Find similar movies</button>
+      <div id="similar-msg" class="msg" hidden></div>
+      <div id="similar-results" class="table-wrap"></div>
+    </section>
+
+    <details class="info">
+      <summary>Dataset info</summary>
+      <div id="dataset-info">Loading…</div>
+    </details>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
